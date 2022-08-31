@@ -68,6 +68,15 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
+        private void btn_importar_arquivo_Click(object sender, EventArgs e)
+        {
+
+            ofd_arquivo.FileName = "";
+
+            ofd_arquivo.ShowDialog();
+
+        }
+
     }
 
 }

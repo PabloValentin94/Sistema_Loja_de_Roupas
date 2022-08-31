@@ -28,79 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_importar_arquivo = new System.Windows.Forms.Button();
+            this.btn_marcar_todos = new System.Windows.Forms.Button();
+            this.btn_desmarcar_todos = new System.Windows.Forms.Button();
+            this.btn_aplicar_percentual = new System.Windows.Forms.Button();
+            this.btn_excluir_itens_selecionados = new System.Windows.Forms.Button();
             this.dgv_registros = new System.Windows.Forms.DataGridView();
+            this.ofd_arquivo = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_registros)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_importar_arquivo
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.Orange;
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Importar Arquivo";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_importar_arquivo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_importar_arquivo.BackColor = System.Drawing.Color.Orange;
+            this.btn_importar_arquivo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_importar_arquivo.ForeColor = System.Drawing.Color.White;
+            this.btn_importar_arquivo.Location = new System.Drawing.Point(12, 12);
+            this.btn_importar_arquivo.Name = "btn_importar_arquivo";
+            this.btn_importar_arquivo.Size = new System.Drawing.Size(174, 35);
+            this.btn_importar_arquivo.TabIndex = 0;
+            this.btn_importar_arquivo.Text = "Importar Arquivo";
+            this.btn_importar_arquivo.UseVisualStyleBackColor = false;
+            this.btn_importar_arquivo.Click += new System.EventHandler(this.btn_importar_arquivo_Click);
             // 
-            // button2
+            // btn_marcar_todos
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.Magenta;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(434, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Marcar Todos";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_marcar_todos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_marcar_todos.BackColor = System.Drawing.Color.Magenta;
+            this.btn_marcar_todos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_marcar_todos.ForeColor = System.Drawing.Color.White;
+            this.btn_marcar_todos.Location = new System.Drawing.Point(434, 12);
+            this.btn_marcar_todos.Name = "btn_marcar_todos";
+            this.btn_marcar_todos.Size = new System.Drawing.Size(174, 35);
+            this.btn_marcar_todos.TabIndex = 1;
+            this.btn_marcar_todos.Text = "Marcar Todos";
+            this.btn_marcar_todos.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btn_desmarcar_todos
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.Purple;
-            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(614, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 35);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Desmarcar Todos";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_desmarcar_todos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_desmarcar_todos.BackColor = System.Drawing.Color.Purple;
+            this.btn_desmarcar_todos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_desmarcar_todos.ForeColor = System.Drawing.Color.White;
+            this.btn_desmarcar_todos.Location = new System.Drawing.Point(614, 12);
+            this.btn_desmarcar_todos.Name = "btn_desmarcar_todos";
+            this.btn_desmarcar_todos.Size = new System.Drawing.Size(174, 35);
+            this.btn_desmarcar_todos.TabIndex = 2;
+            this.btn_desmarcar_todos.Text = "Desmarcar Todos";
+            this.btn_desmarcar_todos.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btn_aplicar_percentual
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.BackColor = System.Drawing.Color.Green;
-            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(381, 403);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(174, 35);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Aplicar Percentual";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_aplicar_percentual.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_aplicar_percentual.BackColor = System.Drawing.Color.Green;
+            this.btn_aplicar_percentual.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_aplicar_percentual.ForeColor = System.Drawing.Color.White;
+            this.btn_aplicar_percentual.Location = new System.Drawing.Point(381, 403);
+            this.btn_aplicar_percentual.Name = "btn_aplicar_percentual";
+            this.btn_aplicar_percentual.Size = new System.Drawing.Size(174, 35);
+            this.btn_aplicar_percentual.TabIndex = 3;
+            this.btn_aplicar_percentual.Text = "Aplicar Percentual";
+            this.btn_aplicar_percentual.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btn_excluir_itens_selecionados
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(561, 403);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(227, 35);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Excluir Itens Selecionados";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_excluir_itens_selecionados.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_excluir_itens_selecionados.BackColor = System.Drawing.Color.Red;
+            this.btn_excluir_itens_selecionados.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_excluir_itens_selecionados.ForeColor = System.Drawing.Color.White;
+            this.btn_excluir_itens_selecionados.Location = new System.Drawing.Point(561, 403);
+            this.btn_excluir_itens_selecionados.Name = "btn_excluir_itens_selecionados";
+            this.btn_excluir_itens_selecionados.Size = new System.Drawing.Size(227, 35);
+            this.btn_excluir_itens_selecionados.TabIndex = 4;
+            this.btn_excluir_itens_selecionados.Text = "Excluir Itens Selecionados";
+            this.btn_excluir_itens_selecionados.UseVisualStyleBackColor = false;
             // 
             // dgv_registros
             // 
@@ -111,17 +113,21 @@
             this.dgv_registros.Size = new System.Drawing.Size(776, 344);
             this.dgv_registros.TabIndex = 5;
             // 
+            // ofd_arquivo
+            // 
+            this.ofd_arquivo.FileName = "openFileDialog1";
+            // 
             // frm_sistema_loja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgv_registros);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_excluir_itens_selecionados);
+            this.Controls.Add(this.btn_aplicar_percentual);
+            this.Controls.Add(this.btn_desmarcar_todos);
+            this.Controls.Add(this.btn_marcar_todos);
+            this.Controls.Add(this.btn_importar_arquivo);
             this.Name = "frm_sistema_loja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema: Loja";
@@ -133,12 +139,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_importar_arquivo;
+        private System.Windows.Forms.Button btn_marcar_todos;
+        private System.Windows.Forms.Button btn_desmarcar_todos;
+        private System.Windows.Forms.Button btn_aplicar_percentual;
+        private System.Windows.Forms.Button btn_excluir_itens_selecionados;
         private System.Windows.Forms.DataGridView dgv_registros;
+        private System.Windows.Forms.OpenFileDialog ofd_arquivo;
     }
 }
 
