@@ -64,6 +64,7 @@
             this.btn_marcar_todos.TabIndex = 1;
             this.btn_marcar_todos.Text = "Marcar Todos";
             this.btn_marcar_todos.UseVisualStyleBackColor = false;
+            this.btn_marcar_todos.Click += new System.EventHandler(this.btn_marcar_todos_Click);
             // 
             // btn_desmarcar_todos
             // 
@@ -77,6 +78,7 @@
             this.btn_desmarcar_todos.TabIndex = 2;
             this.btn_desmarcar_todos.Text = "Desmarcar Todos";
             this.btn_desmarcar_todos.UseVisualStyleBackColor = false;
+            this.btn_desmarcar_todos.Click += new System.EventHandler(this.btn_desmarcar_todos_Click);
             // 
             // btn_aplicar_percentual
             // 
@@ -90,6 +92,7 @@
             this.btn_aplicar_percentual.TabIndex = 3;
             this.btn_aplicar_percentual.Text = "Aplicar Percentual";
             this.btn_aplicar_percentual.UseVisualStyleBackColor = false;
+            this.btn_aplicar_percentual.Click += new System.EventHandler(this.btn_aplicar_percentual_Click);
             // 
             // btn_excluir_itens_selecionados
             // 
@@ -103,6 +106,7 @@
             this.btn_excluir_itens_selecionados.TabIndex = 4;
             this.btn_excluir_itens_selecionados.Text = "Excluir Itens Selecionados";
             this.btn_excluir_itens_selecionados.UseVisualStyleBackColor = false;
+            this.btn_excluir_itens_selecionados.Click += new System.EventHandler(this.btn_excluir_itens_selecionados_Click);
             // 
             // dgv_registros
             // 
@@ -112,10 +116,12 @@
             this.dgv_registros.Name = "dgv_registros";
             this.dgv_registros.Size = new System.Drawing.Size(776, 344);
             this.dgv_registros.TabIndex = 5;
+            this.dgv_registros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_registros_CellClick);
             // 
             // ofd_arquivo
             // 
             this.ofd_arquivo.FileName = "openFileDialog1";
+            this.ofd_arquivo.Title = "Escolha o arquivo desejado:";
             // 
             // frm_sistema_loja
             // 
