@@ -16,7 +16,7 @@ namespace Aplicativo_NET_Framework_12
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_sistema_loja());
+            Application.Run(new frm_sistema_loja_de_roupas());
         }
     }
 }

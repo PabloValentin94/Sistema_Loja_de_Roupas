@@ -13,10 +13,10 @@ using System.IO; // Biblioteca que permite manipular arquivos do dispositivo.
 namespace Aplicativo_NET_Framework_12
 {
 
-    public partial class frm_sistema_loja : Form
+    public partial class frm_sistema_loja_de_roupas : Form
     {
 
-        public frm_sistema_loja()
+        public frm_sistema_loja_de_roupas()
         {
 
             InitializeComponent();
@@ -161,7 +161,7 @@ namespace Aplicativo_NET_Framework_12
 
                             // Definindo que a cor de fundo, da linha, deve ser vermelha.
 
-                            linha_dgv.DefaultCellStyle.BackColor = Color.Red;
+                            linha_dgv.DefaultCellStyle.BackColor = Color.DarkRed;
 
                         }
 
@@ -170,7 +170,7 @@ namespace Aplicativo_NET_Framework_12
 
                             // Definindo que a cor de fundo, da linha, deve ser cinza.
 
-                            linha_dgv.DefaultCellStyle.BackColor = Color.Gray;
+                            linha_dgv.DefaultCellStyle.BackColor = Color.DimGray;
 
                         }
 
@@ -179,7 +179,7 @@ namespace Aplicativo_NET_Framework_12
 
                             // Definindo que a cor de fundo, da linha, deve ser verde.
 
-                            linha_dgv.DefaultCellStyle.BackColor = Color.Green;
+                            linha_dgv.DefaultCellStyle.BackColor = Color.DarkGreen;
 
                         }
 
@@ -255,7 +255,14 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
-        private void dgv_registros_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_informacoes_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void dgv_registros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
@@ -271,7 +278,7 @@ namespace Aplicativo_NET_Framework_12
 
                     /* Definindo que, se a célula CheckBox estiver desmarcada, ela deverá ser marcada. */
 
-                    if(dgv_registros.CurrentCell.Value.Equals(false))
+                    if (dgv_registros.CurrentCell.Value.Equals(false))
                     {
 
                         dgv_registros.CurrentCell.Value = true;
@@ -289,6 +296,27 @@ namespace Aplicativo_NET_Framework_12
                     }
 
                 }
+
+            }
+
+        }
+
+        private void nup_percentual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            // Impedindo que o usuário pressione algo além de teclas numéricas, teclas de controle e vírgulas.
+
+            if(e.KeyChar.Equals(char.Parse(",")) || char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+
+                e.Handled = false;
+
+            }
+
+            else
+            {
+
+                e.Handled = true;
 
             }
 

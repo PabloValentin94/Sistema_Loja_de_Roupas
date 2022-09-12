@@ -1,6 +1,6 @@
 ﻿namespace Aplicativo_NET_Framework_12
 {
-    partial class frm_sistema_loja
+    partial class frm_sistema_loja_de_roupas
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -35,7 +35,11 @@
             this.btn_excluir_itens_selecionados = new System.Windows.Forms.Button();
             this.dgv_registros = new System.Windows.Forms.DataGridView();
             this.ofd_arquivo = new System.Windows.Forms.OpenFileDialog();
+            this.lbl_percentual = new System.Windows.Forms.Label();
+            this.nup_percentual = new System.Windows.Forms.NumericUpDown();
+            this.btn_informacoes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_registros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_percentual)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_importar_arquivo
@@ -116,30 +120,67 @@
             this.dgv_registros.Name = "dgv_registros";
             this.dgv_registros.Size = new System.Drawing.Size(776, 344);
             this.dgv_registros.TabIndex = 5;
-            this.dgv_registros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_registros_CellClick);
+            this.dgv_registros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_registros_CellContentClick);
             // 
             // ofd_arquivo
             // 
             this.ofd_arquivo.FileName = "openFileDialog1";
             this.ofd_arquivo.Title = "Escolha o arquivo desejado:";
             // 
-            // frm_sistema_loja
+            // lbl_percentual
+            // 
+            this.lbl_percentual.AutoSize = true;
+            this.lbl_percentual.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_percentual.Location = new System.Drawing.Point(93, 413);
+            this.lbl_percentual.Name = "lbl_percentual";
+            this.lbl_percentual.Size = new System.Drawing.Size(197, 18);
+            this.lbl_percentual.TabIndex = 6;
+            this.lbl_percentual.Text = "Percentual a ser aplicado:";
+            // 
+            // nup_percentual
+            // 
+            this.nup_percentual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nup_percentual.Location = new System.Drawing.Point(296, 412);
+            this.nup_percentual.Name = "nup_percentual";
+            this.nup_percentual.Size = new System.Drawing.Size(56, 22);
+            this.nup_percentual.TabIndex = 7;
+            this.nup_percentual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nup_percentual_KeyPress);
+            // 
+            // btn_informacoes
+            // 
+            this.btn_informacoes.BackColor = System.Drawing.Color.Blue;
+            this.btn_informacoes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_informacoes.ForeColor = System.Drawing.Color.White;
+            this.btn_informacoes.Location = new System.Drawing.Point(12, 403);
+            this.btn_informacoes.Name = "btn_informacoes";
+            this.btn_informacoes.Size = new System.Drawing.Size(34, 35);
+            this.btn_informacoes.TabIndex = 8;
+            this.btn_informacoes.Text = "?";
+            this.btn_informacoes.UseVisualStyleBackColor = false;
+            this.btn_informacoes.Click += new System.EventHandler(this.btn_informacoes_Click);
+            // 
+            // frm_sistema_loja_de_roupas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_informacoes);
+            this.Controls.Add(this.nup_percentual);
+            this.Controls.Add(this.lbl_percentual);
             this.Controls.Add(this.dgv_registros);
             this.Controls.Add(this.btn_excluir_itens_selecionados);
             this.Controls.Add(this.btn_aplicar_percentual);
             this.Controls.Add(this.btn_desmarcar_todos);
             this.Controls.Add(this.btn_marcar_todos);
             this.Controls.Add(this.btn_importar_arquivo);
-            this.Name = "frm_sistema_loja";
+            this.Name = "frm_sistema_loja_de_roupas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema: Loja";
+            this.Text = "Sistema: Loja de Roupas";
             this.Load += new System.EventHandler(this.frm_sistema_loja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_registros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_percentual)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -152,6 +193,9 @@
         private System.Windows.Forms.Button btn_excluir_itens_selecionados;
         private System.Windows.Forms.DataGridView dgv_registros;
         private System.Windows.Forms.OpenFileDialog ofd_arquivo;
+        private System.Windows.Forms.Label lbl_percentual;
+        private System.Windows.Forms.NumericUpDown nup_percentual;
+        private System.Windows.Forms.Button btn_informacoes;
     }
 }
 
