@@ -38,6 +38,7 @@
             this.lbl_percentual = new System.Windows.Forms.Label();
             this.nup_percentual = new System.Windows.Forms.NumericUpDown();
             this.btn_informacoes = new System.Windows.Forms.Button();
+            this.btn_legenda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_registros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nup_percentual)).BeginInit();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             this.dgv_registros.Name = "dgv_registros";
             this.dgv_registros.Size = new System.Drawing.Size(776, 344);
             this.dgv_registros.TabIndex = 5;
+            this.dgv_registros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_registros_CellClick);
             this.dgv_registros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_registros_CellContentClick);
             // 
             // ofd_arquivo
@@ -129,9 +131,10 @@
             // 
             // lbl_percentual
             // 
+            this.lbl_percentual.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_percentual.AutoSize = true;
             this.lbl_percentual.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_percentual.Location = new System.Drawing.Point(93, 413);
+            this.lbl_percentual.Location = new System.Drawing.Point(93, 412);
             this.lbl_percentual.Name = "lbl_percentual";
             this.lbl_percentual.Size = new System.Drawing.Size(197, 18);
             this.lbl_percentual.TabIndex = 6;
@@ -139,8 +142,9 @@
             // 
             // nup_percentual
             // 
+            this.nup_percentual.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nup_percentual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nup_percentual.Location = new System.Drawing.Point(296, 412);
+            this.nup_percentual.Location = new System.Drawing.Point(296, 411);
             this.nup_percentual.Name = "nup_percentual";
             this.nup_percentual.Size = new System.Drawing.Size(56, 22);
             this.nup_percentual.TabIndex = 7;
@@ -148,6 +152,7 @@
             // 
             // btn_informacoes
             // 
+            this.btn_informacoes.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_informacoes.BackColor = System.Drawing.Color.Blue;
             this.btn_informacoes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_informacoes.ForeColor = System.Drawing.Color.White;
@@ -159,11 +164,26 @@
             this.btn_informacoes.UseVisualStyleBackColor = false;
             this.btn_informacoes.Click += new System.EventHandler(this.btn_informacoes_Click);
             // 
+            // btn_legenda
+            // 
+            this.btn_legenda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_legenda.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btn_legenda.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_legenda.ForeColor = System.Drawing.Color.White;
+            this.btn_legenda.Location = new System.Drawing.Point(223, 12);
+            this.btn_legenda.Name = "btn_legenda";
+            this.btn_legenda.Size = new System.Drawing.Size(174, 35);
+            this.btn_legenda.TabIndex = 9;
+            this.btn_legenda.Text = "Legenda";
+            this.btn_legenda.UseVisualStyleBackColor = false;
+            this.btn_legenda.Click += new System.EventHandler(this.btn_legenda_Click);
+            // 
             // frm_sistema_loja_de_roupas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_legenda);
             this.Controls.Add(this.btn_informacoes);
             this.Controls.Add(this.nup_percentual);
             this.Controls.Add(this.lbl_percentual);
@@ -196,6 +216,7 @@
         private System.Windows.Forms.Label lbl_percentual;
         private System.Windows.Forms.NumericUpDown nup_percentual;
         private System.Windows.Forms.Button btn_informacoes;
+        private System.Windows.Forms.Button btn_legenda;
     }
 }
 

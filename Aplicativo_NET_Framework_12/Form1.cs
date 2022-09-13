@@ -16,17 +16,45 @@ namespace Aplicativo_NET_Framework_12
     public partial class frm_sistema_loja_de_roupas : Form
     {
 
+        double gastos = 0;
+
+        double lucro = 0;
+
+        double quantia_liquida = 0;
+
         public frm_sistema_loja_de_roupas()
         {
 
+            // Inicializando o formulário.
+
             InitializeComponent();
+
+            // Zerando o valor do NumericUpDown "Percentual".
+
+            nup_percentual.Value = 0;
+
+            // Desabilitando componentes desnecessários, em um primeiro momento.
+
+            btn_legenda.Enabled = false;
+
+            btn_marcar_todos.Enabled = false;
+
+            btn_desmarcar_todos.Enabled = false;
+
+            btn_informacoes.Enabled = false;
+
+            btn_aplicar_percentual.Enabled = false;
+
+            nup_percentual.Enabled = false;
+
+            btn_excluir_itens_selecionados.Enabled = false;
 
         }
 
         private void frm_sistema_loja_Load(object sender, EventArgs e)
         {
 
-            // Definindo as colunas do DataGridView:
+            // Definindo as colunas do DataGridView.
 
             dgv_registros.Columns.Insert(0, new DataGridViewCheckBoxColumn());
             dgv_registros.Columns.Insert(1, new DataGridViewTextBoxColumn());
@@ -36,17 +64,17 @@ namespace Aplicativo_NET_Framework_12
             dgv_registros.Columns.Insert(5, new DataGridViewTextBoxColumn());
             dgv_registros.Columns.Insert(6, new DataGridViewTextBoxColumn());
 
-            // Renomeando as colunas do DataGridView:
+            // Renomeando as colunas do DataGridView.
 
             dgv_registros.Columns[0].Name = "OK";
             dgv_registros.Columns[1].Name = "ID";
             dgv_registros.Columns[2].Name = "EAN";
             dgv_registros.Columns[3].Name = "Produto";
-            dgv_registros.Columns[4].Name = "Valor da Compra";
-            dgv_registros.Columns[5].Name = "Valor da Venda";
+            dgv_registros.Columns[4].Name = "Valor de Compra";
+            dgv_registros.Columns[5].Name = "Valor de Venda";
             dgv_registros.Columns[6].Name = "Estoque";
 
-            // Configurando o DataGridView:
+            // Configurando o DataGridView.
 
             dgv_registros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -58,7 +86,7 @@ namespace Aplicativo_NET_Framework_12
 
             dgv_registros.AllowUserToOrderColumns = true;
 
-            // Configurando as colunas de valores monetários:
+            // Configurando as colunas de valores monetários.
 
             dgv_registros.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -131,13 +159,13 @@ namespace Aplicativo_NET_Framework_12
 
                     dgv_registros.Rows.Add(false, id, ean, produto, valor_compra, valor_venda, estoque);
 
-                    /* Camisa: vestimenta social que possui gola e botões.
-                     * Camiseta: diferente da camisa não é considerada uma vestimenta social, mas sim,
+                    /* Camisa. vestimenta social que possui gola e botões.
+                     * Camiseta. diferente da camisa não é considerada uma vestimenta social, mas sim,
                      * tradicional.
-                     * Blusa: vestimenta usada em clima ameno, serve mais para estilo social
+                     * Blusa. vestimenta usada em clima ameno, serve mais para estilo social
                      * do que para aquecer.
-                     * Casaco: vestimenta usada para aquecer.
-                     * Jaqueta: é basicamente igual ao casaco, mas, geralmente é utilizada de forma que a parte
+                     * Casaco. vestimenta usada para aquecer.
+                     * Jaqueta. é basicamente igual ao casaco, mas, geralmente é utilizada de forma que a parte
                      * frontal fique aberta. */
 
                 }
@@ -152,11 +180,15 @@ namespace Aplicativo_NET_Framework_12
                     foreach(DataGridViewRow linha_dgv in dgv_registros.Rows)
                     {
 
+                        double preco_compra = Convert.ToDouble(linha_dgv.Cells[4].Value);
+
+                        double preco_venda = Convert.ToDouble(linha_dgv.Cells[5].Value);
+
                         // Definindo que a cor da fonte deve ser branca.
 
                         linha_dgv.DefaultCellStyle.ForeColor = Color.White;
 
-                        if (Convert.ToDouble(linha_dgv.Cells[4].Value) > Convert.ToDouble(linha_dgv.Cells[5].Value))
+                        if (preco_compra > preco_venda)
                         {
 
                             // Definindo que a cor de fundo, da linha, deve ser vermelha.
@@ -165,7 +197,7 @@ namespace Aplicativo_NET_Framework_12
 
                         }
 
-                        else if(Convert.ToDouble(linha_dgv.Cells[4].Value) == Convert.ToDouble(linha_dgv.Cells[5].Value))
+                        else if(preco_compra == preco_venda)
                         {
 
                             // Definindo que a cor de fundo, da linha, deve ser cinza.
@@ -183,15 +215,50 @@ namespace Aplicativo_NET_Framework_12
 
                         }
 
-                        /* Vermelho: Se o valor de compra for maior que o valor de venda.
-                         * Cinza: Se o valor de compra for igual ao valor de venda.
-                         * Verde:Se o valor de compra for menor que o valor de venda. */
+                        /* Vermelho. Se o valor de compra for maior que o valor de venda.
+                         * Cinza. Se o valor de compra for igual ao valor de venda.
+                         * Verde.Se o valor de compra for menor que o valor de venda. */
+
+                        // Calculando o gasto total.
+
+                        gastos += preco_compra;
+
+                        // Calculando o lucro bruto.
+
+                        lucro += preco_venda;
+
+                        linha_dgv.Cells[0].Value = false;
 
                     }
+
+                    // Calculando o lucro líquido.
+
+                    quantia_liquida = lucro - gastos;
+
+                    // Reabilitando os botões necessários.
+
+                    btn_legenda.Enabled = true;
+
+                    btn_marcar_todos.Enabled = true;
+
+                    btn_desmarcar_todos.Enabled = true;
+
+                    btn_informacoes.Enabled = true;
+
+                    btn_excluir_itens_selecionados.Enabled = true;
 
                 }
 
             }
+
+        }
+
+        private void btn_legenda_Click(object sender, EventArgs e)
+        {
+
+            // Acionando o formulário de legenda.
+
+            new frm_legenda().Show();
 
         }
 
@@ -241,24 +308,108 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
+        // Está dando erro:
+
         private void btn_aplicar_percentual_Click(object sender, EventArgs e)
         {
 
+            /* O componente já defini o mínimo e o máximo por padrão, mas não é muito confiável, por isso, foi criada
+             * esta condição, que serve como uma segunda linha de validação.
+             * Se a condição for verdadeira, o sistema fará o processo especificado abaixo, senão, retornará
+             * uma mensagem de erro para o usuário, como é mostrado mais adiante. */
 
+            if(nup_percentual.Value > 0 && nup_percentual.Value < 100)
+            {
+
+                /* Calculando o novo valor da célula que será alterada (valor atual +
+                 * [valor atual * [valor do NumericUpDown "Percentual" / 100]]). */
+
+                double valor_venda_atualizado = Convert.ToDouble(dgv_registros.CurrentCell.Value) +
+                                                (Convert.ToDouble(dgv_registros.CurrentCell.Value) *
+                                                (Convert.ToDouble(nup_percentual.Value) / 100));
+
+                // Alterando o valor da célula.
+
+                dgv_registros.CurrentCell.Value = valor_venda_atualizado;
+
+                // Zerando o valor do NumericUpDown "Percentual".
+
+                nup_percentual.Value = 0;
+
+                // Desabilitando os componentes.
+
+                btn_aplicar_percentual.Enabled = false;
+
+                nup_percentual.Enabled = false;
+
+            }
+
+            else
+            {
+
+                // Zerando o valor do NumericUpDown "Percentual".
+
+                nup_percentual.Value = 0;
+
+                // Acionando uma mensagem de erro na tela do usuário.
+
+                MessageBox.Show("Insira um valor de percentual válido.", "Atenção!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
+
+        // Está dando erro:
 
         private void btn_excluir_itens_selecionados_Click(object sender, EventArgs e)
         {
 
+            // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
+            if (dgv_registros.RowCount > 0)
+            {
+
+                // Vasculhando as linhas do DataGridView.
+
+                foreach (DataGridViewRow linha in dgv_registros.Rows)
+                {
+
+                    // Se a CheckBox da linha estiver marcada, então a condição será verdadeira.
+
+                    if (linha.Cells[0].Value.Equals(true))
+                    {
+
+                        // Recalculando o gasto total.
+
+                        gastos -= Convert.ToDouble(linha.Cells[4].Value);
+
+                        // Recalculando o lucro bruto.
+
+                        lucro -= Convert.ToDouble(linha.Cells[5].Value);
+
+                        // Removendo a linha do DataGridView.
+
+                        dgv_registros.Rows.RemoveAt(linha.Index);
+
+                    }
+
+                }
+
+                // Recalculando o lucro líquido.
+
+                quantia_liquida = lucro - gastos;
+
+            }
 
         }
 
         private void btn_informacoes_Click(object sender, EventArgs e)
         {
 
+            // Acionando o formulário de informações.
 
+            new frm_informacoes(gastos, lucro, quantia_liquida).Show();
 
         }
 
@@ -301,6 +452,8 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
+        // Método que será acionado quando o usuário digitar no NumericUpDown "Percentual".
+
         private void nup_percentual_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -309,6 +462,8 @@ namespace Aplicativo_NET_Framework_12
             if(e.KeyChar.Equals(char.Parse(",")) || char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
             {
 
+                // Desativando a digitação.
+
                 e.Handled = false;
 
             }
@@ -316,7 +471,51 @@ namespace Aplicativo_NET_Framework_12
             else
             {
 
+                // Reativando a digitação.
+
                 e.Handled = true;
+
+            }
+
+        }
+
+        // Método que será acionado quando o usuário clicar no DataGridView.
+
+        private void dgv_registros_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
+
+            if (dgv_registros.RowCount > 0)
+            {
+
+                /* Se a celula clicada pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
+                 * NumericUpDown "Percentual" serão reativados. */
+
+                if (dgv_registros.CurrentCell.ColumnIndex.Equals(5))
+                {
+
+                    // Reativando componentes.
+
+                    btn_aplicar_percentual.Enabled = true;
+
+                    nup_percentual.Enabled = true;
+
+                }
+
+                /* Se a celula clicada não pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
+                 * NumericUpDown "Percentual" serão desativados. */
+
+                else
+                {
+
+                    // Desativando componentes.
+
+                    btn_aplicar_percentual.Enabled = false;
+
+                    nup_percentual.Enabled = false;
+
+                }
 
             }
 

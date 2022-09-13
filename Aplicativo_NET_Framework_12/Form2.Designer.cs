@@ -34,11 +34,12 @@
             this.lbl_gastos_resultado = new System.Windows.Forms.Label();
             this.lbl_lucro_resultado = new System.Windows.Forms.Label();
             this.lbl_quantia_liquida_resultado = new System.Windows.Forms.Label();
-            this.btn_voltar = new System.Windows.Forms.Button();
+            this.btn_fechar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_gastos
             // 
+            this.lbl_gastos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_gastos.AutoSize = true;
             this.lbl_gastos.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_gastos.ForeColor = System.Drawing.Color.Red;
@@ -50,6 +51,7 @@
             // 
             // lbl_lucro
             // 
+            this.lbl_lucro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_lucro.AutoSize = true;
             this.lbl_lucro.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_lucro.ForeColor = System.Drawing.Color.Green;
@@ -61,6 +63,7 @@
             // 
             // lbl_quantia_liquida
             // 
+            this.lbl_quantia_liquida.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_quantia_liquida.AutoSize = true;
             this.lbl_quantia_liquida.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_quantia_liquida.ForeColor = System.Drawing.Color.Blue;
@@ -72,46 +75,50 @@
             // 
             // lbl_gastos_resultado
             // 
+            this.lbl_gastos_resultado.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_gastos_resultado.AutoSize = true;
             this.lbl_gastos_resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_gastos_resultado.Location = new System.Drawing.Point(228, 51);
             this.lbl_gastos_resultado.Name = "lbl_gastos_resultado";
-            this.lbl_gastos_resultado.Size = new System.Drawing.Size(73, 22);
+            this.lbl_gastos_resultado.Size = new System.Drawing.Size(78, 22);
             this.lbl_gastos_resultado.TabIndex = 3;
-            this.lbl_gastos_resultado.Text = "R$0,00";
+            this.lbl_gastos_resultado.Text = "R$ 0,00";
             // 
             // lbl_lucro_resultado
             // 
+            this.lbl_lucro_resultado.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_lucro_resultado.AutoSize = true;
             this.lbl_lucro_resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_lucro_resultado.Location = new System.Drawing.Point(228, 108);
             this.lbl_lucro_resultado.Name = "lbl_lucro_resultado";
-            this.lbl_lucro_resultado.Size = new System.Drawing.Size(73, 22);
+            this.lbl_lucro_resultado.Size = new System.Drawing.Size(78, 22);
             this.lbl_lucro_resultado.TabIndex = 4;
-            this.lbl_lucro_resultado.Text = "R$0,00";
+            this.lbl_lucro_resultado.Text = "R$ 0,00";
             // 
             // lbl_quantia_liquida_resultado
             // 
+            this.lbl_quantia_liquida_resultado.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_quantia_liquida_resultado.AutoSize = true;
-            this.lbl_quantia_liquida_resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_quantia_liquida_resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_quantia_liquida_resultado.Location = new System.Drawing.Point(228, 178);
             this.lbl_quantia_liquida_resultado.Name = "lbl_quantia_liquida_resultado";
-            this.lbl_quantia_liquida_resultado.Size = new System.Drawing.Size(73, 22);
+            this.lbl_quantia_liquida_resultado.Size = new System.Drawing.Size(77, 22);
             this.lbl_quantia_liquida_resultado.TabIndex = 5;
-            this.lbl_quantia_liquida_resultado.Text = "R$0,00";
+            this.lbl_quantia_liquida_resultado.Text = "R$ 0,00";
             // 
-            // btn_voltar
+            // btn_fechar
             // 
-            this.btn_voltar.BackColor = System.Drawing.Color.Purple;
-            this.btn_voltar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_voltar.ForeColor = System.Drawing.Color.White;
-            this.btn_voltar.Location = new System.Drawing.Point(142, 265);
-            this.btn_voltar.Name = "btn_voltar";
-            this.btn_voltar.Size = new System.Drawing.Size(78, 35);
-            this.btn_voltar.TabIndex = 6;
-            this.btn_voltar.Text = "Voltar";
-            this.btn_voltar.UseVisualStyleBackColor = false;
-            this.btn_voltar.Click += new System.EventHandler(this.btn_voltar_Click);
+            this.btn_fechar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_fechar.BackColor = System.Drawing.Color.Purple;
+            this.btn_fechar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_fechar.ForeColor = System.Drawing.Color.White;
+            this.btn_fechar.Location = new System.Drawing.Point(150, 265);
+            this.btn_fechar.Name = "btn_fechar";
+            this.btn_fechar.Size = new System.Drawing.Size(78, 35);
+            this.btn_fechar.TabIndex = 6;
+            this.btn_fechar.Text = "Fechar";
+            this.btn_fechar.UseVisualStyleBackColor = false;
+            this.btn_fechar.Click += new System.EventHandler(this.btn_fechar_Click);
             // 
             // frm_informacoes
             // 
@@ -120,7 +127,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(384, 326);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_voltar);
+            this.Controls.Add(this.btn_fechar);
             this.Controls.Add(this.lbl_quantia_liquida_resultado);
             this.Controls.Add(this.lbl_lucro_resultado);
             this.Controls.Add(this.lbl_gastos_resultado);
@@ -128,6 +135,7 @@
             this.Controls.Add(this.lbl_lucro);
             this.Controls.Add(this.lbl_gastos);
             this.Name = "frm_informacoes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Sistema: Loja de Roupas - Informações";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,6 +150,6 @@
         private System.Windows.Forms.Label lbl_gastos_resultado;
         private System.Windows.Forms.Label lbl_lucro_resultado;
         private System.Windows.Forms.Label lbl_quantia_liquida_resultado;
-        private System.Windows.Forms.Button btn_voltar;
+        private System.Windows.Forms.Button btn_fechar;
     }
 }
