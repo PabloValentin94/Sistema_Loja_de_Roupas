@@ -145,6 +145,11 @@
             this.nup_percentual.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nup_percentual.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nup_percentual.Location = new System.Drawing.Point(296, 411);
+            this.nup_percentual.Maximum = new decimal(new int[] {
+            101,
+            0,
+            0,
+            0});
             this.nup_percentual.Name = "nup_percentual";
             this.nup_percentual.Size = new System.Drawing.Size(56, 22);
             this.nup_percentual.TabIndex = 7;

@@ -308,8 +308,6 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
-        // Está dando erro:
-
         private void btn_aplicar_percentual_Click(object sender, EventArgs e)
         {
 
@@ -318,7 +316,7 @@ namespace Aplicativo_NET_Framework_12
              * Se a condição for verdadeira, o sistema fará o processo especificado abaixo, senão, retornará
              * uma mensagem de erro para o usuário, como é mostrado mais adiante. */
 
-            if(nup_percentual.Value > 0 && nup_percentual.Value < 100)
+            if(nup_percentual.Value > 0 && nup_percentual.Value <= 100)
             {
 
                 /* Calculando o novo valor da célula que será alterada (valor atual +
