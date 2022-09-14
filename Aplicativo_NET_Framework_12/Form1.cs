@@ -571,7 +571,7 @@ namespace Aplicativo_NET_Framework_12
             if(dgv_registros.RowCount > 0)
             {
 
-                /* Se a celula clicada pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
+                /* Se a célula clicada pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
                  * NumericUpDown "Percentual" serão reativados. */
 
                 if(dgv_registros.CurrentCell.ColumnIndex == 5)
@@ -585,7 +585,7 @@ namespace Aplicativo_NET_Framework_12
 
                 }
 
-                /* Se a celula clicada não pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
+                /* Se a célula clicada não pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
                  * NumericUpDown "Percentual" serão desativados. */
 
                 else
