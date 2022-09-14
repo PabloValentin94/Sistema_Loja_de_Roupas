@@ -103,6 +103,15 @@ namespace Aplicativo_NET_Framework_12
 
             dgv_registros.RowCount = 0;
 
+            /* Zerando as variáveis globais (isso garante que,caso o usuário abra outro arquivo, os antigos valores dessas variáveis serão
+             * descartados e substituidos pelos novos valores a serem calculados. */
+
+            gastos = 0;
+
+            lucro = 0;
+
+            quantia_liquida = 0;
+
             /* O motivo de declararmos que o nome do arquivo é igual a "em branco" é porquê,
              * senão fizermos isso, quando o explorador de arquivos for acionado, o nome
              * que virá por padrão será o name do componente OpenFileDialog. Para evitar isso,
@@ -172,7 +181,7 @@ namespace Aplicativo_NET_Framework_12
 
                 // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
-                if (dgv_registros.RowCount > 0)
+                if(dgv_registros.RowCount > 0)
                 {
 
                     // Vasculhando as linhas do DataGridView.
@@ -188,7 +197,7 @@ namespace Aplicativo_NET_Framework_12
 
                         linha_dgv.DefaultCellStyle.ForeColor = Color.White;
 
-                        if (preco_compra > preco_venda)
+                        if(preco_compra > preco_venda)
                         {
 
                             // Definindo que a cor de fundo, da linha, deve ser vermelha.
@@ -267,12 +276,12 @@ namespace Aplicativo_NET_Framework_12
 
             // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
-            if (dgv_registros.RowCount > 0)
+            if(dgv_registros.RowCount > 0)
             {
 
                 // Vasculhando as linhas do DataGridView.
 
-                foreach (DataGridViewRow linha in dgv_registros.Rows)
+                foreach(DataGridViewRow linha in dgv_registros.Rows)
                 {
 
                     // Definindo que o valor da célula, da primeira coluna, é igual a true (marcado).
@@ -295,7 +304,7 @@ namespace Aplicativo_NET_Framework_12
 
                 // Vasculhando as linhas do DataGridView.
 
-                foreach (DataGridViewRow linha in dgv_registros.Rows)
+                foreach(DataGridViewRow linha in dgv_registros.Rows)
                 {
 
                     // Definindo que o valor da célula, da primeira coluna, é igual a false (desmarcado).
@@ -316,19 +325,35 @@ namespace Aplicativo_NET_Framework_12
              * Se a condição for verdadeira, o sistema fará o processo especificado abaixo, senão, retornará
              * uma mensagem de erro para o usuário, como é mostrado mais adiante. */
 
-            if(nup_percentual.Value > 0 && nup_percentual.Value <= 100)
+            /* Observação importante: após fazer alguns testes, percebeu-se que os valores de mínimo e máximo do NumericUpDown "Porcentagem"
+             * não devem ser usados em uma estrutura de decisão que envolva dados do sistema. Eles só devem servir como "chão" e "teto".
+             * Por esse exato motivo que o primeiro valor da estrutura é maior do que o mínimo (maior do que 0) e o segundo, menor ou igual
+             * ao máximo menos um (101 - 1 = 100), ou seja, o máximo só serviu de base para a condição, mas não é usado diretamente.
+             * Erro encontrado: o valor do NumericUpDown não atendia a condição da estrutura, mas mesmo assim o sistema prosseguia. */
+
+            if(nup_percentual.Value > nup_percentual.Minimum && nup_percentual.Value <= (nup_percentual.Maximum - 1))
             {
+
+                // Calculando o valor a ser adicionado na célula.
+
+                double valor_adicionado = Convert.ToDouble(dgv_registros.CurrentCell.Value) * (Convert.ToDouble(nup_percentual.Value) / 100);
 
                 /* Calculando o novo valor da célula que será alterada (valor atual +
                  * [valor atual * [valor do NumericUpDown "Percentual" / 100]]). */
 
-                double valor_venda_atualizado = Convert.ToDouble(dgv_registros.CurrentCell.Value) +
-                                                (Convert.ToDouble(dgv_registros.CurrentCell.Value) *
-                                                (Convert.ToDouble(nup_percentual.Value) / 100));
+                double valor_venda_atualizado = Convert.ToDouble(dgv_registros.CurrentCell.Value) + valor_adicionado;
 
                 // Alterando o valor da célula.
 
                 dgv_registros.CurrentCell.Value = valor_venda_atualizado;
+
+                // Recalculando lucro bruto.
+
+                lucro += valor_adicionado;
+
+                // Recalculando lucro líquido.
+
+                quantia_liquida = lucro - gastos;
 
                 // Zerando o valor do NumericUpDown "Percentual".
 
@@ -339,6 +364,23 @@ namespace Aplicativo_NET_Framework_12
                 btn_aplicar_percentual.Enabled = false;
 
                 nup_percentual.Enabled = false;
+
+                // Acionando uma mensagem de sucesso na tela do usuário.
+
+                MessageBox.Show("Valor alterado com sucesso.", "Aviso!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
+            // O mínimo é usado, mas a estrutura não possui nenhum dado do sistema, apenas uma mensagem de aviso para o usuário.
+
+            else if(nup_percentual.Value == 0)
+            {
+
+                // Acionando uma mensagem de aviso na tela do usuário.
+
+                MessageBox.Show("Percentual igual a 0! Valor não alterado.", "Aviso!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 
@@ -358,37 +400,35 @@ namespace Aplicativo_NET_Framework_12
 
         }
 
-        // Está dando erro:
-
         private void btn_excluir_itens_selecionados_Click(object sender, EventArgs e)
         {
 
             // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
-            if (dgv_registros.RowCount > 0)
+            if(dgv_registros.RowCount > 0)
             {
 
                 // Vasculhando as linhas do DataGridView.
 
-                foreach (DataGridViewRow linha in dgv_registros.Rows)
+                for(int i = dgv_registros.RowCount - 1; i >= 0; i--)
                 {
 
                     // Se a CheckBox da linha estiver marcada, então a condição será verdadeira.
 
-                    if (linha.Cells[0].Value.Equals(true))
+                    if (Convert.ToBoolean(dgv_registros.Rows[i].Cells[0].Value) == true)
                     {
 
-                        // Recalculando o gasto total.
+                        // Recalculando os gastos.
 
-                        gastos -= Convert.ToDouble(linha.Cells[4].Value);
+                        gastos -= Convert.ToDouble(dgv_registros.Rows[i].Cells[4].Value);
 
                         // Recalculando o lucro bruto.
 
-                        lucro -= Convert.ToDouble(linha.Cells[5].Value);
+                        lucro -= Convert.ToDouble(dgv_registros.Rows[i].Cells[5].Value);
 
-                        // Removendo a linha do DataGridView.
+                        // Excluindo a linha atual do DataGridView.
 
-                        dgv_registros.Rows.RemoveAt(linha.Index);
+                        dgv_registros.Rows.RemoveAt(dgv_registros.Rows[i].Index);
 
                     }
 
@@ -397,6 +437,9 @@ namespace Aplicativo_NET_Framework_12
                 // Recalculando o lucro líquido.
 
                 quantia_liquida = lucro - gastos;
+
+                MessageBox.Show("Item(ns) excluído(s) com sucesso.", "Aviso!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 
@@ -416,18 +459,18 @@ namespace Aplicativo_NET_Framework_12
 
             // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
-            if (dgv_registros.RowCount > 0)
+            if(dgv_registros.RowCount > 0)
             {
 
                 /* A seguir especificamos que, a condição só será verdadeira, se a célula clicada
                  * pertencer a primeira coluna, ou seja, a coluna CheckBox. */
 
-                if (dgv_registros.CurrentCell.ColumnIndex.Equals(0))
+                if(dgv_registros.CurrentCell.ColumnIndex == 0)
                 {
 
                     /* Definindo que, se a célula CheckBox estiver desmarcada, ela deverá ser marcada. */
 
-                    if (dgv_registros.CurrentCell.Value.Equals(false))
+                    if(Convert.ToBoolean(dgv_registros.CurrentCell.Value) == false)
                     {
 
                         dgv_registros.CurrentCell.Value = true;
@@ -457,7 +500,7 @@ namespace Aplicativo_NET_Framework_12
 
             // Impedindo que o usuário pressione algo além de teclas numéricas, teclas de controle e vírgulas.
 
-            if(e.KeyChar.Equals(char.Parse(",")) || char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
+            if(e.KeyChar == char.Parse(",") || char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
             {
 
                 // Desativando a digitação.
@@ -484,13 +527,13 @@ namespace Aplicativo_NET_Framework_12
 
             // A condição só será verdadeira, se o número de linhas do DataGridView for maior que 0.
 
-            if (dgv_registros.RowCount > 0)
+            if(dgv_registros.RowCount > 0)
             {
 
                 /* Se a celula clicada pertencer a coluna "Valor de Venda", então o botão "Aplicar Percentual" e o
                  * NumericUpDown "Percentual" serão reativados. */
 
-                if (dgv_registros.CurrentCell.ColumnIndex.Equals(5))
+                if(dgv_registros.CurrentCell.ColumnIndex == 5)
                 {
 
                     // Reativando componentes.
