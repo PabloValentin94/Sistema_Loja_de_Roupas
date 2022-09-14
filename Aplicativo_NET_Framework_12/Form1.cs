@@ -408,6 +408,10 @@ namespace Aplicativo_NET_Framework_12
             if(dgv_registros.RowCount > 0)
             {
 
+                // Criando uma variável que servirá para uma condição criada adiante.
+
+                int y = 0;
+
                 // Vasculhando as linhas do DataGridView.
 
                 for(int i = dgv_registros.RowCount - 1; i >= 0; i--)
@@ -430,16 +434,53 @@ namespace Aplicativo_NET_Framework_12
 
                         dgv_registros.Rows.RemoveAt(dgv_registros.Rows[i].Index);
 
+                        // Auto incrementando a variável "y".
+
+                        y++;
+
                     }
 
                 }
 
-                // Recalculando o lucro líquido.
+                // A condição só será verdadeira, se a variável "y" for maior que 0.
 
-                quantia_liquida = lucro - gastos;
+                if (y > 0)
+                {
 
-                MessageBox.Show("Item(ns) excluído(s) com sucesso.", "Aviso!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    // Recalculando o lucro líquido.
+
+                    quantia_liquida = lucro - gastos;
+
+                    // A condição só será verdadeira, se o número de linhas do DataGridView for igual a 0.
+
+                    if (dgv_registros.RowCount == 0)
+                    {
+
+                        /* Como o número de linhas é igual a 0, nenhum botão, com excessão do "Importar Arquivo", é
+                         * mais necessário, portanto serão desativados. */
+
+                        btn_legenda.Enabled = false;
+
+                        btn_marcar_todos.Enabled = false;
+
+                        btn_desmarcar_todos.Enabled = false;
+
+                        btn_informacoes.Enabled = false;
+
+                        btn_aplicar_percentual.Enabled = false;
+
+                        nup_percentual.Enabled = false;
+
+                        btn_excluir_itens_selecionados.Enabled = false;
+
+                    }
+
+                    // Acionando uma mensagem de sucesso na tela do usuário (com uso da variável "y").
+
+                    MessageBox.Show(y + " item(ns) excluído(s) com sucesso.", "Aviso!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
 
             }
 
