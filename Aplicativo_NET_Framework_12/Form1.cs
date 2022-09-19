@@ -168,13 +168,13 @@ namespace Aplicativo_NET_Framework_12
 
                     dgv_registros.Rows.Add(false, id, ean, produto, valor_compra, valor_venda, estoque);
 
-                    /* Camisa. vestimenta social que possui gola e botões.
-                     * Camiseta. diferente da camisa não é considerada uma vestimenta social, mas sim,
+                    /* Camisa: vestimenta social que possui gola e botões.
+                     * Camiseta: diferente da camisa não é considerada uma vestimenta social, mas sim,
                      * tradicional.
-                     * Blusa. vestimenta usada em clima ameno, serve mais para estilo social
+                     * Blusa: vestimenta usada em clima ameno, serve mais para estilo social
                      * do que para aquecer.
-                     * Casaco. vestimenta usada para aquecer.
-                     * Jaqueta. é basicamente igual ao casaco, mas, geralmente é utilizada de forma que a parte
+                     * Casaco: vestimenta usada para aquecer.
+                     * Jaqueta: é basicamente igual ao casaco, mas, geralmente é utilizada de forma que a parte
                      * frontal fique aberta. */
 
                 }
