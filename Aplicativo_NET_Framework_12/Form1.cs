@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -224,9 +224,9 @@ namespace Aplicativo_NET_Framework_12
 
                         }
 
-                        /* Vermelho. Se o valor de compra for maior que o valor de venda.
-                         * Cinza. Se o valor de compra for igual ao valor de venda.
-                         * Verde.Se o valor de compra for menor que o valor de venda. */
+                        /* Vermelho: Se o valor de compra for maior que o valor de venda.
+                         * Cinza: Se o valor de compra for igual ao valor de venda.
+                         * Verde: Se o valor de compra for menor que o valor de venda. */
 
                         // Calculando o gasto total.
 
@@ -320,7 +320,7 @@ namespace Aplicativo_NET_Framework_12
         private void btn_aplicar_percentual_Click(object sender, EventArgs e)
         {
 
-            /* O componente já defini o mínimo e o máximo por padrão, mas não é muito confiável, por isso, foi criada
+            /* O componente já define o mínimo e o máximo por padrão, mas não é muito confiável, por isso, foi criada
              * esta condição, que serve como uma segunda linha de validação.
              * Se a condição for verdadeira, o sistema fará o processo especificado abaixo, senão, retornará
              * uma mensagem de erro para o usuário, como é mostrado mais adiante. */
