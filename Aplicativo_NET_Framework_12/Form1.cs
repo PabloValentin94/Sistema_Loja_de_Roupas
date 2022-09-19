@@ -140,7 +140,7 @@ namespace Aplicativo_NET_Framework_12
                 {
 
                     /* Usamos a propriedade Split para fazer uma separação. No exemplo
-                     * adiante estamos dizendo que uma linha deverá ser lida e para cada ";" deverá ocorrer
+                     * adiante estamos dizendo que uma linha deverá ser lida e para cada "/" deverá ocorrer
                      * uma sepação do texto. Em seguida definimos que cada separação refere-se a um campo do
                      * DataGridView e então o adicionamos nele. */
 
